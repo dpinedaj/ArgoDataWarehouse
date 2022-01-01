@@ -1,5 +1,4 @@
 from sqlalchemy import Column, VARCHAR, NUMERIC
-from geoalchemy2 import Geometry
 
 from argodw.ports import Raw, Processed
 
@@ -137,5 +136,5 @@ class ProcessedFireIncidentsModel(Processed):
     NumberofSprinklerHeadsOperating = Column("Number of Sprinkler Heads Operating", NUMERIC, nullable=True)
     SupervisorDistrict = Column("Supervisor District", VARCHAR, nullable=True)
     neighborhooddistrict = Column("neighborhood_district", VARCHAR, nullable=True)
-    point = Column("point", Geometry('POINT'), nullable=True)
+    point = Column("point", VARCHAR, nullable=True)
     CurrentDate = Column(VARCHAR, nullable=False)

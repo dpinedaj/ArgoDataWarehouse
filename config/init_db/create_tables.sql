@@ -136,6 +136,6 @@ CREATE TABLE IF NOT EXISTS processed.fire_incidents(
     "Number of Sprinkler Heads Operating" NUMERIC,
     "Supervisor District" VARCHAR,
     "neighborhood_district" VARCHAR,
-    "point" Point,
+    "point" VARCHAR,
     "CurrentDate" VARCHAR
 );
