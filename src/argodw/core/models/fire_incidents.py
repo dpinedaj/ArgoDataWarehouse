@@ -1,14 +1,14 @@
 from sqlalchemy import Column, VARCHAR, NUMERIC
 from geoalchemy2 import Geometry
 
-from argodw.core.models.base import Raw, Processed, MapeableBase
+from argodw.ports import Raw, Processed
 
-class RawFireIncidentsModel(Raw, MapeableBase):
+class RawFireIncidentsModel(Raw):
     __tablename__ = 'fire_incidents'
     
     IncidentNumber = Column("Incident Number", VARCHAR, nullable=True)
     ExposureNumber = Column("Exposure Number", VARCHAR, nullable=True)
-    ID = Column("ID", VARCHAR, nullable=True)
+    ID = Column("ID", VARCHAR, primary_key=True, nullable=False)
     Address = Column("Address", VARCHAR, nullable=True)
     IncidentDate = Column("Incident Date", VARCHAR, nullable=True)
     CallNumber = Column("Call Number", VARCHAR, nullable=True)
@@ -70,13 +70,13 @@ class RawFireIncidentsModel(Raw, MapeableBase):
     SupervisorDistrict = Column("Supervisor District", VARCHAR, nullable=True)
     neighborhooddistrict = Column("neighborhood_district", VARCHAR, nullable=True)
     point = Column("point", VARCHAR, nullable=True)
-
-class ProcessedFireIncidentsModel(Processed, MapeableBase):
+    CurrentDate = Column(VARCHAR, nullable=False)
+class ProcessedFireIncidentsModel(Processed):
     __tablename__ = 'fire_incidents'
 
     IncidentNumber = Column("Incident Number", NUMERIC, nullable=True)
     ExposureNumber = Column("Exposure Number", NUMERIC, nullable=True)
-    ID = Column("ID", VARCHAR, nullable=True)
+    ID = Column("ID", VARCHAR, primary_key=True, nullable=False)
     Address = Column("Address", VARCHAR, nullable=True)
     IncidentDate = Column("Incident Date", VARCHAR, nullable=True)
     CallNumber = Column("Call Number", VARCHAR, nullable=True)
@@ -138,3 +138,4 @@ class ProcessedFireIncidentsModel(Processed, MapeableBase):
     SupervisorDistrict = Column("Supervisor District", VARCHAR, nullable=True)
     neighborhooddistrict = Column("neighborhood_district", VARCHAR, nullable=True)
     point = Column("point", Geometry('POINT'), nullable=True)
+    CurrentDate = Column(VARCHAR, nullable=False)

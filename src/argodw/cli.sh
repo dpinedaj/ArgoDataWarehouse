@@ -1,3 +1,4 @@
 #!/bin/bash
+
 arg=$1
-python -c "print('${arg}')"
+pipenv run python cli.py --dataset $1
