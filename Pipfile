@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+shapely = "==1.8.0"
+
+[dev-packages]
+ipykernel = "6.5.0"
+autopep8 = "==1.6.0"
+
+[requires]
+python_version = "3.8.10"
