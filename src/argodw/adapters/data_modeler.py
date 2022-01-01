@@ -1,5 +1,6 @@
 from typing import List
 import time
+import logging
 
 from argodw.ports import Process
 from argodw.core.controllers import *
@@ -20,7 +21,7 @@ class DataModeler(Process):
             try:
                 self.run_controller(controller)
             except Exception as e:
-                print(str(e))
+                logging.warning(str(e))
                 self.retry(controller)
                 
 
@@ -32,7 +33,7 @@ class DataModeler(Process):
                 return
             except:
                 self.retries += 1
-                print(f"Retry {self.retries} failed...")
+                logging.warning(f"Retry {self.retries} failed...")
         else:
-            print("Max Retries reached, skipping...")
+            logging.error("Max Retries reached, skipping...")
             self.retries = 0

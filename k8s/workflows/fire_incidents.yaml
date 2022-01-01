@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: fire-incidents
+spec:
+  schedule: "0 8 * * *"
+  timezone: "America/Bogota"
+  concurrencyPolicy: "Replace"
+  successfulJobsHistoryLimit: 10
+  failedJobsHistoryLimit: 10
+  workflowSpec:
+    entryPoint: run
+    templates:
+      - name: run
+        container:
+          image: "ghcr.io/dpinedaj/argodatawarehouse/worker:latest"
+          command: [ "argodw", "-s", "fire-incidents"]
