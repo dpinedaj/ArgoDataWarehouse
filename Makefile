@@ -22,7 +22,7 @@ drop-argo:
 	kubectl delete ns argo
 
 setup-workflows:
-	@for f in $(shell ls ./k8s/workflows); do ./argo cron create -n argo ./k8s/workflows/$${f}; done
+	@for f in $(shell ls ./k8s/workflows); do argo cron create -n argo ./k8s/workflows/$${f}; done
 
 argo-ui:
 	kubectl -n argo port-forward  deployment/argo-server 2746:2746 
