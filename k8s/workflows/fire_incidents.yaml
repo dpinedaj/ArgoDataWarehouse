@@ -13,5 +13,5 @@ spec:
     templates:
       - name: run
         container:
-          image: "ghcr.io/dpinedaj/argodatawarehouse/worker:latest"
-          command: [ "argodw", "-s", "fire-incidents"]
+          image: "ghcr.io/dpinedaj/argodatawarehouse/worker:1.0"
+          command: [ "argodaniel", "--dataset", "fire_incidents"]

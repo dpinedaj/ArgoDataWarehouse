@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS raw.fire_incidents(
     "neighborhood_district" VARCHAR,
     "point" VARCHAR,
     "CurrentDate" VARCHAR
-);
+) PARTITION BY RANGE ("CurrentDate");
 
 
 -- TODO: PARTITION BY
@@ -138,4 +138,4 @@ CREATE TABLE IF NOT EXISTS processed.fire_incidents(
     "neighborhood_district" VARCHAR,
     "point" VARCHAR,
     "CurrentDate" VARCHAR
-);
+) PARTITION BY RANGE ("CurrentDate");
