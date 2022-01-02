@@ -65,8 +65,8 @@ class ProcessedFireIncidentsController(DataController):
 
         with get_session() as (session, _):
             session.execute(f"""
-            CREATE TABLE {RawFireIncidentsModel.name()}_{current_date.replace('-', '_')}
-            PARTITION OF {RawFireIncidentsModel.name()}
+            CREATE TABLE {ProcessedFireIncidentsModel.name()}_{current_date.replace('-', '_')}
+            PARTITION OF {ProcessedFireIncidentsModel.name()}
             FOR VALUES FROM ('{current_date}') to ('{tomorrow}')
             """)
             session.commit()
