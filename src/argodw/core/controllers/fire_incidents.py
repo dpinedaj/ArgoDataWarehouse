@@ -30,7 +30,7 @@ class RawFireIncidentsController(DataController):
 
         with get_session() as (session, _):
             session.execute(f"""
-            CREATE TABLE {RawFireIncidentsModel.name()}_{current_date.replace('-', '_')}
+            CREATE TABLE IF NOT EXISTS {RawFireIncidentsModel.name()}_{current_date.replace('-', '_')}
             PARTITION OF {RawFireIncidentsModel.name()}
             FOR VALUES FROM ('{current_date}') to ('{tomorrow}')
             """)
@@ -65,7 +65,7 @@ class ProcessedFireIncidentsController(DataController):
 
         with get_session() as (session, _):
             session.execute(f"""
-            CREATE TABLE {ProcessedFireIncidentsModel.name()}_{current_date.replace('-', '_')}
+            CREATE TABLE IF NOT EXISTS {ProcessedFireIncidentsModel.name()}_{current_date.replace('-', '_')}
             PARTITION OF {ProcessedFireIncidentsModel.name()}
             FOR VALUES FROM ('{current_date}') to ('{tomorrow}')
             """)
